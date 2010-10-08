@@ -113,7 +113,7 @@ q {
     font-size: 80%;
     background: #fff;
     /* ensure top navigation dont touches portlets, content etc.. #10491 */
-    margin: 0 0 1em 0;
+    margin: 0 0;
 }
 #portal-globalnav li {
 }
@@ -183,12 +183,22 @@ q {
     float: right;
     text-align: left;
     clear: right;
-    margin: 1.2em 0;
     font-size: 80%;
+    width: 330px;
+    height: 75px;
+    margin: 0 0 5px;
 }
 
 #portal-searchbox label {
     font-weight: normal;
+}
+
+#livesearch0 {
+    margin: 32px 0 0 65px;
+}
+
+#livesearch0 .searchSection {
+    display: none;
 }
 
 #searchGadget {
