@@ -1,0 +1,2 @@
+recursive-include cys *
+global-exclude *pyc
