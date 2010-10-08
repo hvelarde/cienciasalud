@@ -30,7 +30,7 @@ img { vertical-align: text-bottom; }
 
 body {
     font: 100% Arial, FreeSans, sans-serif;
-    background: White;
+    background: url("bg.gif") repeat-x scroll 0 0 #fff;
     color: Black;
     /* width: 58em; margin: 1em auto; */
 }
@@ -93,6 +93,11 @@ q {
 
 /* @group Navigation/search */
 
+#visual-portal-wrapper {
+    margin: 10px auto;
+    width: 960px;
+}
+
 #portal-header {
     position: relative;
     z-index: 2;
@@ -106,7 +111,7 @@ q {
 #portal-globalnav {
     clear: both;
     font-size: 80%;
-    background: #ddd;
+    background: #fff;
     /* ensure top navigation dont touches portlets, content etc.. #10491 */
     margin: 0 0 1em 0;
 }
@@ -114,8 +119,9 @@ q {
 }
 #portal-globalnav li a {
     display: inline-block;
-    padding: 0.5em 1em 2em 1em;
-    background: #ddd;
+    padding: 6px 22px;
+    background: url('corner.gif') no-repeat scroll right top #808080;
+    color: #fff;
     min-width: 6em;
     white-space: normal;
     /*TODO: Once we have removed the whitespace from the nav template, this can be put back*/
@@ -125,12 +131,12 @@ q {
 
 #portal-globalnav .selected a,
 #portal-globalnav a:hover {
-    background: #205c90;
-    color: White;
+    background: url('corner.gif') no-repeat scroll right top #b2eb40;
+    color: #2f637a;
 }
 #portal-globalnav .selected a:hover {
-    background: #ddd;
-    color: #205c90;
+    background: url('corner.gif') no-repeat scroll right top #b2eb40;
+    color: #2f637a;
 }
 
 #portal-personaltools {
@@ -173,6 +179,7 @@ q {
 }
 
 #portal-searchbox {
+    background: url("searchbg.gif") no-repeat scroll 0 0 #fff;
     float: right;
     text-align: left;
     clear: right;
