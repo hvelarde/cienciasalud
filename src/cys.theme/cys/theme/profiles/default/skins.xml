@@ -12,7 +12,7 @@
     meta_type="Filesystem Directory View"
     directory="cys.theme:skins/cys_theme_styles"/>
 
- <skin-path name="Ciencia y Salud" based-on="Plone Default">
+ <skin-path name="Ciencia y Salud" based-on="Sunburst Theme">
   <layer name="cys_theme_custom_images"
      insert-after="custom"/>
   <layer name="cys_theme_custom_templates"
