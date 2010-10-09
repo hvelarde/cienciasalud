@@ -1,2 +1,33 @@
 /* Stylesheet for the 'Ciencia y Salud' Plone theme */
 
+#portal-column-two .portletSearch .portletHeader, .portletSearch .portletFooter {
+    display: none;
+}
+
+#portal-column-two .portletSearch {
+    background: transparent url(++resource++cys.theme.images/searchbg.gif) top left no-repeat;
+}
+
+#portal-column-two .portlet-static-enfermedades,
+#portal-column-two .portlet-static-medicina-preventiva,
+#portal-column-two .portlet-static-medicina-tradicional {
+    background: none repeat scroll 0 0 #eee;
+    margin: 0 0 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+#portal-column-two .portlet-static-enfermedades img,
+#portal-column-two .portlet-static-medicina-preventiva img,
+#portal-column-two .portlet-static-medicina-tradicional img {
+    float: left !important;
+    border: none;
+    margin: 0 5px 0;
+    vertical-align: text-top;
+}
+
+#portal-column-two .portlet-static-enfermedades h2,
+#portal-column-two .portlet-static-medicina-preventiva h2,
+#portal-column-two .portlet-static-medicina-tradicional h2 {
+    font-size: 1em;
+}

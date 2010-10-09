@@ -179,26 +179,15 @@ q {
 }
 
 #portal-searchbox {
-    background: url("searchbg.gif") no-repeat scroll 0 0 #fff;
     float: right;
     text-align: left;
     clear: right;
+    margin: 1.2em 0;
     font-size: 80%;
-    width: 330px;
-    height: 75px;
-    margin: 0 0 5px;
 }
 
 #portal-searchbox label {
     font-weight: normal;
-}
-
-#livesearch0 {
-    margin: 32px 0 0 65px;
-}
-
-#livesearch0 .searchSection {
-    display: none;
 }
 
 #searchGadget {
