@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:omit-tag="">
+
+<tal:recentlist tal:define="results python:context.portal_catalog.searchResults(portal_type=['News Item'],
+                                        review_state='published',
+                                        sort_on='effective',
+                                        sort_order='reverse',
+                                        sort_limit=5)[:3];">
+
+<div  id="portal-news">
+<p>Artículos recientes:</p>
+<ul>
+    <tal:newsitems  tal:define="plone_view context/@@plone;
+                                getIcon nocall:plone_view/getIcon;"
+                    tal:repeat="obj results">
+    <li>
+        <a href=""
+           class="tile"
+           tal:attributes="href obj/getURL;
+                           title obj/Description">
+            <span tal:replace="obj/pretty_title_or_id">
+            Plone 2.1 announced!
+            </span>
+         </a>
+    </li>
+    </tal:newsitems>
+</ul>
+</div>
+</tal:recentlist>
+</html>

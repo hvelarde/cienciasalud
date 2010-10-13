@@ -11,6 +11,14 @@
       />
   
   <!-- Viewlets registration -->
+  <browser:viewlet
+      name="cys.news"
+      manager="plone.app.layout.viewlets.interfaces.IAboveContent"
+      layer=".interfaces.IThemeSpecific"
+      template="templates/news.pt"
+      permission="zope2.View" 
+      />
+
   <!-- Zope 3 browser resources -->
 
   <!-- Resource directory for images -->

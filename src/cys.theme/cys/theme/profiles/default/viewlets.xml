@@ -5,4 +5,10 @@
     <viewlet name="plone.searchbox" />
   </hidden>
 
+  <!-- Above content -->
+  <order manager="plone.abovecontent" skinname="Ciencia y Salud" based-on="Plone Default">
+    <viewlet name="cys.news" />
+    <viewlet name="plone.path_bar" />
+  </order>
+
 </object>
