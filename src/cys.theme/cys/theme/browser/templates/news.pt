@@ -10,7 +10,7 @@
                                         sort_limit=5)[:3];">
 
 <div  id="portal-news">
-<p>Artículos recientes:</p>
+<p><a href="/noticias">Artículos recientes</a></p>
 <ul>
     <tal:newsitems  tal:define="plone_view context/@@plone;
                                 getIcon nocall:plone_view/getIcon;"

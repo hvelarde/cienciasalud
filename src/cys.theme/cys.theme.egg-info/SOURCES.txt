@@ -30,6 +30,7 @@ cys/theme/browser/images/searchbg.gif
 cys/theme/browser/images/topicsbg.gif
 cys/theme/browser/stylesheets/README.txt
 cys/theme/browser/stylesheets/main.css
+cys/theme/browser/templates/ad.pt
 cys/theme/browser/templates/news.bak
 cys/theme/browser/templates/news.pt
 cys/theme/locales/README.txt
