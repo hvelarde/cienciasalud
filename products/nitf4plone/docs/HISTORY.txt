@@ -1,0 +1,20 @@
+Changelog for nitf4plone
+
+    (name of developer listed in brackets)
+
+nitf4plone 0.2 - Beta release
+
+    - Fixed http://plone.org/products/nitf4plone/issues/1
+      extender is not available after restarting Zope
+    - Fixed http://plone.org/products/nitf4plone/issues/2
+      move to IOrderableSchemaExtender
+    - Test suite now runs on Plone 2.5 and Plone 3.0
+      [hvelarde]
+
+nitf4plone 0.1 - Alpha release
+
+    - Initial product release
+    - Initial Spanish translation
+      [hvelarde]
+    - Fixed installer
+      [erral]
