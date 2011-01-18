@@ -3,7 +3,7 @@
 
   <!-- Portal top -->
   <order manager="plone.portalheader" skinname="Ciencia y Salud" based-on="Plone Default">
-    <viewlet name="cys.ad" insert-before="plone.logo" />
+    <viewlet name="cienciasalud.ad" insert-before="plone.logo" />
   </order>
 
   <hidden manager="plone.portalheader" skinname="Ciencia y Salud">
@@ -12,7 +12,7 @@
 
   <!-- Above content -->
   <order manager="plone.abovecontent" skinname="Ciencia y Salud" based-on="Plone Default">
-    <viewlet name="cys.news" />
+    <viewlet name="cienciasalud.news" />
     <viewlet name="plone.path_bar" />
   </order>
 
