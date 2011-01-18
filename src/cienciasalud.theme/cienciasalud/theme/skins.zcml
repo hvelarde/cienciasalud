@@ -1,7 +1,7 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:cmf="http://namespaces.zope.org/cmf"
-    i18n_domain="cys.theme">
+    i18n_domain="cienciasalud.theme">
 
   <!-- File System Directory Views registration -->
   <cmf:registerDirectory name="cys_theme_custom_images"/>

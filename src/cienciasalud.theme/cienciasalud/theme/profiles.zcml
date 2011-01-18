@@ -1,7 +1,7 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-    i18n_domain="cys.theme">
+    i18n_domain="cienciasalud.theme">
 
   <genericsetup:registerProfile
       name="default"
@@ -12,10 +12,10 @@
       />
 
   <genericsetup:importStep
-      name="cys.theme.various"
+      name="cienciasalud.theme.various"
       title="Ciencia y Salud: miscellaneous import steps"
       description="Various import steps that are not handled by GS import/export handlers."
-      handler="cys.theme.setuphandlers.setupVarious">
+      handler="cienciasalud.theme.setuphandlers.setupVarious">
     <depends name="skins"/>
   </genericsetup:importStep>
 

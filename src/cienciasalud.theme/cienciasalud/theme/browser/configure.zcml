@@ -1,7 +1,7 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
-    i18n_domain="cys.theme">
+    i18n_domain="cienciasalud.theme">
 
   <!-- 'Ciencia y Salud' Zope 3 browser layer -->
   <interface
@@ -12,7 +12,7 @@
   
   <!-- Viewlets registration -->
   <browser:viewlet
-      name="cys.ad"
+      name="cienciasalud.ad"
       manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
       layer=".interfaces.IThemeSpecific"
       template="templates/ad.pt"
@@ -20,7 +20,7 @@
       />
 
   <browser:viewlet
-      name="cys.news"
+      name="cienciasalud.news"
       manager="plone.app.layout.viewlets.interfaces.IAboveContent"
       layer=".interfaces.IThemeSpecific"
       template="templates/news.pt"
@@ -31,14 +31,14 @@
 
   <!-- Resource directory for images -->
   <browser:resourceDirectory
-      name="cys.theme.images"
+      name="cienciasalud.theme.images"
       directory="images"
       layer=".interfaces.IThemeSpecific"
       />
 
   <!-- Resource directory for stylesheets -->
   <browser:resourceDirectory
-      name="cys.theme.stylesheets"
+      name="cienciasalud.theme.stylesheets"
       directory="stylesheets"
       layer=".interfaces.IThemeSpecific"
       />

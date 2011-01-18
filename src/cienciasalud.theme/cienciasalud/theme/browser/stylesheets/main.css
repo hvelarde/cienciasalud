@@ -1,7 +1,7 @@
 /* Stylesheet for the 'Ciencia y Salud' Plone theme */
 
 #portal-news {
-    background: #b4ee84 url("++resource++cys.theme.images/topicsbg.gif") repeat-x left bottom;
+    background: #b4ee84 url("++resource++cienciasalud.theme.images/topicsbg.gif") repeat-x left bottom;
     font-size: 70%;
     padding: 8px 10px;
     width: 630px;
@@ -13,7 +13,7 @@
 }
 
 #portal-news li a {
-    background: url("++resource++cys.theme.images/bullet.gif") no-repeat left center;
+    background: url("++resource++cienciasalud.theme.images/bullet.gif") no-repeat left center;
     padding: 0 0 0 12px;
     color: #447537;
 }
@@ -23,7 +23,7 @@
 }
 
 #portal-column-two .portletSearch {
-    background: transparent url(++resource++cys.theme.images/searchbg.gif) top left no-repeat;
+    background: transparent url(++resource++cienciasalud.theme.images/searchbg.gif) top left no-repeat;
     height: 75px;
 }
 
