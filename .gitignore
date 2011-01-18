@@ -1,0 +1,15 @@
+*.pyc
+.installed.cfg
+.mr.developer.cfg
+PloneController.app/
+adminPassword.txt
+bin/
+develop-eggs/
+downloads/
+eggs/
+parts/
+src/Products.ContentWellPortlets/
+src/collective.carousel/
+src/collective.disqus/
+var/
+
