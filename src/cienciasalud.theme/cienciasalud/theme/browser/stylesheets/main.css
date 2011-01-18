@@ -105,3 +105,14 @@ div.position-3\3a 4 {
 .tileFooter {
 }
 
+/* listado de noticias al final de la portada
+ */
+
+.portletsBelowContentA, 
+.portletsBelowContentB,
+.portletsBelowContentC {
+    float: left;
+    margin-right: 3%;
+    width: 30%;
+}
+
