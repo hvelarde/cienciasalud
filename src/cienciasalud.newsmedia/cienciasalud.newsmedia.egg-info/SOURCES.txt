@@ -1,0 +1,16 @@
+README.txt
+setup.cfg
+setup.py
+cienciasalud/__init__.py
+cienciasalud.newsmedia.egg-info/PKG-INFO
+cienciasalud.newsmedia.egg-info/SOURCES.txt
+cienciasalud.newsmedia.egg-info/dependency_links.txt
+cienciasalud.newsmedia.egg-info/entry_points.txt
+cienciasalud.newsmedia.egg-info/namespace_packages.txt
+cienciasalud.newsmedia.egg-info/not-zip-safe
+cienciasalud.newsmedia.egg-info/paster_plugins.txt
+cienciasalud.newsmedia.egg-info/requires.txt
+cienciasalud.newsmedia.egg-info/top_level.txt
+cienciasalud/newsmedia/__init__.py
+cienciasalud/newsmedia/newsmedia.py
+cienciasalud/newsmedia/tests.py
