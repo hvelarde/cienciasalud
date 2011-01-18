@@ -12,6 +12,14 @@
   
   <!-- Viewlets registration -->
   <browser:viewlet
+      name="cys.ad"
+      manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+      layer=".interfaces.IThemeSpecific"
+      template="templates/ad.pt"
+      permission="zope2.View" 
+      />
+
+  <browser:viewlet
       name="cys.news"
       manager="plone.app.layout.viewlets.interfaces.IAboveContent"
       layer=".interfaces.IThemeSpecific"

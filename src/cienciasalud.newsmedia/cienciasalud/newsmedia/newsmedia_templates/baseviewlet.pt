@@ -1,0 +1,10 @@
+<div id="news-media-wrapper">
+    <div id="newsmedia-nav">
+        <div tal:define="viewlet_id viewlet/__name__" tal:attributes="id viewlet_id">
+            <!--tal:content="string:VIEWLET: ${viewlet_id}"-->
+            <ul tal:condition="viewlet/newsmedia/hasContainer" tal:define="media viewlet/newsmedia/getContents">
+                <li tal:repeat="medium media" tal:content="medium"/>
+            </ul>
+        </div>
+    </div>
+</div>

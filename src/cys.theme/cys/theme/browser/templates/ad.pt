@@ -1,0 +1,8 @@
+<div  id="ad">
+    <object tal:attributes="data string:${context/portal_url}/imagenes/ad-1"
+		width="728" height="90">
+        <embed tal:attributes="src string:${context/portal_url}/imagenes/ad-1"
+		type="application/x-shockwave-flash"
+		width="728" height="90" />
+    </object>
+</div>
