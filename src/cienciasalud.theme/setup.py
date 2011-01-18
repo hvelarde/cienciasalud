@@ -3,9 +3,9 @@ import os
 
 version = '1.0'
 
-setup(name='cys.theme',
+setup(name='cienciasalud.theme',
       version=version,
-      description="An installable theme for Plone 3",
+      description="An installable theme for Plone 4",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
@@ -17,15 +17,15 @@ setup(name='cys.theme',
       keywords='',
       author='Hector Velarde',
       author_email='hector.velarde@gmail.com',
-      url='http://svn.plone.org/svn/collective/',
+      url='https://github.com/hvelarde/cienciasalud',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
-      namespace_packages=['cys'],
+      namespace_packages=['cienciasalud'],
       include_package_data=True,
       zip_safe=False,
       install_requires=[
           'setuptools',
-          # -*- Extra requirements: -*-
+          'Plone',
       ],
       entry_points="""
       # -*- Entry points: -*-
