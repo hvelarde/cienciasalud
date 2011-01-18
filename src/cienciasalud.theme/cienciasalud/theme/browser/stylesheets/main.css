@@ -79,3 +79,29 @@ div.width-3\3a 4 {
 div.position-3\3a 4 {
     margin-left: -32.205% !important;
 }
+
+/* estilos para el carrusel
+ */
+
+.tileImage {
+    float: left;
+    margin-right: 10px;
+}
+
+.tileHeadline {
+    letter-spacing: -0.05em;
+    color: Black;
+    font-family: "Helvetica Neue",Arial,FreeSans,sans-serif;
+    font-weight: bold;
+    line-height: 1em;
+}
+
+.tileBody {
+    color: #666666;
+    font: bold 1.25em "Helvetica Neue",Arial,FreeSans,sans-serif;
+    margin-bottom: 0.5em;
+}
+
+.tileFooter {
+}
+
