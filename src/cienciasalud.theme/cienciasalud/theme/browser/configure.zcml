@@ -43,4 +43,31 @@
       layer=".interfaces.IThemeSpecific"
       />
 
+<browser:page
+   name="main-story"
+   for="Products.ATContentTypes.content.newsitem.ATNewsItem"
+   permission="zope.Public"
+   template="main-story.pt"
+   class=".newsitem.MainStory"
+   layer="Products.Collage.interfaces.ICollageBrowserLayer"
+   />
+
+<browser:page
+   name="story"
+   for="Products.ATContentTypes.content.newsitem.ATNewsItem"
+   permission="zope.Public"
+   template="story.pt"
+   class=".newsitem.Story"
+   layer="Products.Collage.interfaces.ICollageBrowserLayer"
+   />
+
+<browser:page
+   name="image"
+   for="Products.ATContentTypes.content.newsitem.ATNewsItem"
+   permission="zope.Public"
+   template="image.pt"
+   class=".newsitem.Image"
+   layer="Products.Collage.interfaces.ICollageBrowserLayer"
+   />
+
 </configure>
