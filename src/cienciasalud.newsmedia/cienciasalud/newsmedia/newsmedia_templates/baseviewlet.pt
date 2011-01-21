@@ -1,10 +1,31 @@
 <div id="news-media-wrapper">
     <div id="newsmedia-nav">
         <div tal:define="viewlet_id viewlet/__name__" tal:attributes="id viewlet_id">
+            <div class="newsMediaContainer"
+                tal:condition="context/getImage|nothing">
+                <div id="default-image">
+                    <a href="#"
+                        tal:define="here_url context/@@plone_context_state/object_url;"
+                        tal:attributes="href string:$here_url/image/image_view_fullscreen"
+                        id="parent-fieldname-image">
+                        <img tal:replace="structure python: context.tag(scale='mini', css_class='newsImage')" src="" alt="" />
+                    </a>
+                    <p class="discreet" tal:condition="context/imageCaption|nothing">
+                    <metal:field use-macro="python:context.widget('imageCaption', mode='view')">
+                    Image Caption
+                    </metal:field>
+                    </p>
+                </div>
+                <div class="visualClear"></div>
+            </div>
+            <tal:media condition="viewlet/newsmedia/hasContainer" define="media viewlet/newsmedia/getContents">
+            <div id="media-contents" class="newsMediaContainer" tal:repeat="medium media">
+                <span tal:content="medium"/>
+            </div>
+            </tal:media>
+            <div class="visualClear"></div>
             <!--tal:content="string:VIEWLET: ${viewlet_id}"-->
-            <ul tal:condition="viewlet/newsmedia/hasContainer" tal:define="media viewlet/newsmedia/getContents">
-                <li tal:repeat="medium media" tal:content="medium"/>
-            </ul>
         </div>
     </div>
 </div>
+            <div class="visualClear"></div>

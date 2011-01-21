@@ -11,18 +11,13 @@ from zope.schema import TextLine
 from zope.container.interfaces import INameChooser
 
 from OFS.Image import Image
+from zope.location import location
 
 grok.context(IATNewsItem)
 
 class IFile(Interface):
     title = TextLine(
-            title = u'Content Title')
-    contentType = BytesLine(
-            title = u'Content Type',
-            description=u'The content type identifies the type of data.',
-            default='',
-            required=False,
-            missing_value=''
+            title = u'Content Title',
             )
 
     data = Bytes(
@@ -81,6 +76,13 @@ class MediaForNews(grok.Adapter):
         if self.hasContainer():
             return self.context._media
 
+class Media(grok.View):
+    grok.context(IATNewsItem)
+
+    def publishTraverse(self, request, name):
+        self.traverse_subpath = request.getTraversalStack() + [name]
+        request.setTraversalStack([])
+        return zope.location.location.located(INewsItemMedia(self.context).getMediaContainer(), self.context, 'media')
 
 class BaseViewlet(grok.Viewlet):
     grok.viewletmanager(IAboveContentBody)
@@ -98,6 +100,7 @@ class AddFileForm(grok.AddForm):
     grok.name(u'add_media')
 
     form_fields = grok.AutoFields(IFile).select('data')
+    template = grok.PageTemplateFile('newsmedia_templates/default_edit_form.pt')
 
     def update(self):
         newsmedia = INewsItemMedia(self.context)
