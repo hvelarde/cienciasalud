@@ -48,6 +48,11 @@ class NewsMediaContainer(grok.Container):
 class INewsItemMedia(Interface):
     """ Marker interface for news-item media. """
 
+@grok.adapter(IATNewsItem)
+@grok.implementer(IMediaContainer)
+def news_to_media(news_item):
+    return news_item._media
+
 class MediaForNews(grok.Adapter):
     grok.provides(INewsItemMedia)
     grok.context(IATNewsItem)
@@ -76,13 +81,32 @@ class MediaForNews(grok.Adapter):
         if self.hasContainer():
             return self.context._media
 
+class MediaContainerView(grok.View):
+    grok.context(IMediaContainer)
+
+    def render(self):
+        return u'%s' % (self.context.keys())
+
+
 class Media(grok.View):
     grok.context(IATNewsItem)
 
     def publishTraverse(self, request, name):
         self.traverse_subpath = request.getTraversalStack() + [name]
         request.setTraversalStack([])
-        return zope.location.location.located(INewsItemMedia(self.context).getMediaContainer(), self.context, 'media')
+        media = INewsItemMedia(self.context).getMediaContainer()
+        proxy = location.LocationProxy(media, self.context.__name__, 'media')
+        return zope.location.location.located(proxy, self.context, 'media')
+
+class MediaView(grok.View):
+    grok.context(IMediaContainer)
+
+    def render(self):
+        return u'Media Container'
+
+    def __getitem__(self, name):
+        container = INewsItemMedia(self.context).getMediaContainer()
+        return u'Name:%s    Parent: %s' %  (name, container.__name__)
 
 class BaseViewlet(grok.Viewlet):
     grok.viewletmanager(IAboveContentBody)
