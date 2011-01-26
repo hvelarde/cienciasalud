@@ -18,9 +18,9 @@
                 </div>
                 <div class="visualClear"></div>
             </div>
-            <tal:media condition="viewlet/newsmedia/hasContainer" define="media viewlet/newsmedia/getContents">
-            <div id="media-contents" class="newsMediaContainer" tal:repeat="medium media">
-                <span tal:content="medium"/>
+            <tal:media condition="viewlet/newsmedia/hasContainer" define="media context/media">
+            <div id="media-contents" class="newsMediaContainer" tal:repeat="medium media/values">
+                <span tal:replace="structure medium"/>
             </div>
             </tal:media>
             <div class="visualClear"></div>

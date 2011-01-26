@@ -2,6 +2,7 @@ from five import grok
 from plone.app.layout.viewlets.interfaces import IAboveContentBody
 #from Products.Five.browser.pagetemplatefile import ZopeTwoPageTemplateFile
 
+from Acquisition import Implicit
 from Products.ATContentTypes.interfaces import IATNewsItem
 
 from zope.interface import Interface
@@ -42,7 +43,7 @@ class IImage(IFile):
 class IMediaContainer(Interface):
     """ Marker interface for a news-item media container. """
 
-class NewsMediaContainer(grok.Container):
+class NewsMediaContainer(Implicit, grok.Container):
     grok.implements(IMediaContainer)
 
 class INewsItemMedia(Interface):
@@ -51,7 +52,7 @@ class INewsItemMedia(Interface):
 @grok.adapter(IATNewsItem)
 @grok.implementer(IMediaContainer)
 def news_to_media(news_item):
-    return news_item._media
+    return news_item.media
 
 class MediaForNews(grok.Adapter):
     grok.provides(INewsItemMedia)
@@ -63,39 +64,45 @@ class MediaForNews(grok.Adapter):
             self.createContainer()
 
     def hasContainer(self):
-        media = getattr(self.context, '_media', None)
+        media = getattr(self.context, 'media', None)
         return media is not None
 
     def createContainer(self):
-        media = getattr(self.context, '_media', None)
+        media = getattr(self.context, 'media', None)
         if media is None:
             media = NewsMediaContainer()
-            setattr(self.context, '_media', media)
+            setattr(self.context, 'media', media)
 
     def getContents(self):
         if not self.hasContainer():
             return []
-        return self.context._media.keys()
+        return self.context.media.keys()
 
     def getMediaContainer(self):
         if self.hasContainer():
-            return self.context._media
+            return self.context.media
 
 class MediaContainerView(grok.View):
     grok.context(IMediaContainer)
+    grok.name('index')
 
     def render(self):
-        return u'%s' % (self.context.keys())
+        return u'%s' % (list(self.context.keys()))
 
 
-class Media(grok.View):
+class MediaList(grok.View):
     grok.context(IATNewsItem)
+
+    def render(self):
+        on = getattr(self, 'on', None)
+        return u'Media Container %s' % on
 
     def publishTraverse(self, request, name):
         self.traverse_subpath = request.getTraversalStack() + [name]
         request.setTraversalStack([])
         media = INewsItemMedia(self.context).getMediaContainer()
         proxy = location.LocationProxy(media, self.context.__name__, 'media')
+        self.on = u'on'
         return zope.location.location.located(proxy, self.context, 'media')
 
 class MediaView(grok.View):
@@ -105,8 +112,7 @@ class MediaView(grok.View):
         return u'Media Container'
 
     def __getitem__(self, name):
-        container = INewsItemMedia(self.context).getMediaContainer()
-        return u'Name:%s    Parent: %s' %  (name, container.__name__)
+        return getattr(self.context, name, self.context)
 
 class BaseViewlet(grok.Viewlet):
     grok.viewletmanager(IAboveContentBody)
