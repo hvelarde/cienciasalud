@@ -3,22 +3,16 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       tal:omit-tag="">
 
-    <div class="">
-
-        <img tal:replace="structure python: context.tag(scale='mini', css_class='newsImage')" src="" alt="" />
-
+    <div class="newsMainStory">
+        <img tal:replace="structure python: context.tag(scale='thumb')" />
         <h1>
             <a href=""
-               class=""
-               tal:attributes="href context/@@plone_context_state/object_url;
-                               title context/Description">
+               tal:attributes="href context/@@plone_context_state/object_url">
                 <span tal:replace="context/pretty_title_or_id">
                     Título
                 </span>
              </a>
-        </h1>        
-
+        </h1>
         <p tal:content="context/Description">Resumen</p>
-
     </div>
 </html>
