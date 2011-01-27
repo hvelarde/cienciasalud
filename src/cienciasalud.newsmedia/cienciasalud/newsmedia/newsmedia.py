@@ -12,7 +12,6 @@ from zope.schema import TextLine
 from zope.container.interfaces import INameChooser
 
 from OFS.Image import Image
-from zope.location import location
 
 grok.context(IATNewsItem)
 
@@ -29,22 +28,14 @@ class IFile(Interface):
             required=False,
             )
 
-    def getSize():
-        """Return the byte-size of the data of the object."""
-
-class IImage(IFile):
-    """This interface defines an Image that can be displayed.
-    """
-    def getImageSize():
-        """Return a tuple (x, y) that describes the dimensions of
-           the object.
-        """
-
 class IMediaContainer(Interface):
     """ Marker interface for a news-item media container. """
 
 class NewsMediaContainer(Implicit, grok.Container):
     grok.implements(IMediaContainer)
+
+    __name__ = 'media'
+
 
 class INewsItemMedia(Interface):
     """ Marker interface for news-item media. """
@@ -88,31 +79,6 @@ class MediaContainerView(grok.View):
 
     def render(self):
         return u'%s' % (list(self.context.keys()))
-
-
-class MediaList(grok.View):
-    grok.context(IATNewsItem)
-
-    def render(self):
-        on = getattr(self, 'on', None)
-        return u'Media Container %s' % on
-
-    def publishTraverse(self, request, name):
-        self.traverse_subpath = request.getTraversalStack() + [name]
-        request.setTraversalStack([])
-        media = INewsItemMedia(self.context).getMediaContainer()
-        proxy = location.LocationProxy(media, self.context.__name__, 'media')
-        self.on = u'on'
-        return zope.location.location.located(proxy, self.context, 'media')
-
-class MediaView(grok.View):
-    grok.context(IMediaContainer)
-
-    def render(self):
-        return u'Media Container'
-
-    def __getitem__(self, name):
-        return getattr(self.context, name, self.context)
 
 class BaseViewlet(grok.Viewlet):
     grok.viewletmanager(IAboveContentBody)
