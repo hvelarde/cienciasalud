@@ -27,7 +27,6 @@ setup(name='cienciasalud.newsmedia',
           'setuptools',
           'five.grok',
           # -*- Extra requirements: -*-
-          'zope.app.file',
       ],
       entry_points="""
       # -*- Entry points: -*-

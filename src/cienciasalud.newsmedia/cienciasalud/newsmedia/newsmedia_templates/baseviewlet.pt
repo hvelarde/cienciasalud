@@ -3,26 +3,10 @@
         <div tal:define="viewlet_id viewlet/__name__;
                          here_url context/@@plone_context_state/object_url;"
              tal:attributes="id viewlet_id">
-            <div class="newsMediaContainer"
-                                tal:condition="context/getImage|nothing">
-                <div id="default-image">
-                    <a href="#"
-                        tal:attributes="href string:$here_url/image/image_view_fullscreen"
-                        id="parent-fieldname-image">
-                        <img tal:replace="structure python: context.tag(scale='mini', css_class='newsImage')" src="" alt="" />
-                    </a>
-                    <p class="discreet" tal:condition="context/imageCaption|nothing">
-                    <metal:field use-macro="python:context.widget('imageCaption', mode='view')">
-                    Image Caption
-                    </metal:field>
-                    </p>
-                </div>
-                <div class="visualClear"></div>
-            </div>
             <tal:media condition="viewlet/newsmedia/hasContainer" define="media context/media">
             <div id="media-contents" class="newsMediaContainer" tal:repeat="medium media/keys">
                 <a href="#"
-                    tal:attributes="href string:$here_url/media/$medium">
+                    tal:attributes="href string:$here_url/media/$medium/large">
                     <img src="img" tal:attributes="src string:$here_url/media/$medium/thumb; alt python: media[medium].title" />
                 </a>
                 <p class="discreet" tal:condition="python: media[medium].title" tal:content="python: media[medium].title" />

@@ -1,3 +1,2 @@
 setuptools
 five.grok
-zope.app.file

@@ -1,3 +1,7 @@
+import datetime
+import pytz
+import urllib
+
 from five import grok
 from plone.app.layout.viewlets.interfaces import IAboveContentBody
 #from Products.Five.browser.pagetemplatefile import ZopeTwoPageTemplateFile
@@ -8,6 +12,7 @@ from Acquisition import aq_parent
 from Products.ATContentTypes.interfaces import IATNewsItem
 
 from zope.interface import Interface
+from zope.interface.common import idatetime
 from zope.schema import BytesLine
 from zope.schema import Bytes
 from zope.schema import TextLine
@@ -17,6 +22,7 @@ from plone.i18n.normalizer import filenamenormalizer
 from OFS.Image import Image
 
 from cStringIO import StringIO
+
 try:
     import PIL.Image
 except ImportError:
@@ -32,7 +38,7 @@ _marker = []
 
 grok.context(IATNewsItem)
 
-class IFile(Interface):
+class IImage(Interface):
     title = TextLine(
             title = u'Titulo de la imagen',
             default=u'',
@@ -47,6 +53,9 @@ class IFile(Interface):
             missing_value='',
             required=False,
             )
+
+class MediaImage(Image):
+    grok.implements(IImage)
 
 class IMediaContainer(Interface):
     """ Marker interface for a news-item media container. """
@@ -104,7 +113,7 @@ class AddFileForm(grok.AddForm):
     grok.name(u'add_media')
     grok.require('cmf.AddPortalContent')
 
-    form_fields = grok.AutoFields(IFile)
+    form_fields = grok.AutoFields(IImage)
     template = grok.PageTemplateFile('newsmedia_templates/default_edit_form.pt')
 
     def update(self):
@@ -129,8 +138,26 @@ class AddFileForm(grok.AddForm):
                 caption = filename
             else:
                 caption = data['title']
-            file_ = Image(filename, caption, data['data'], contenttype)
+            file_ = MediaImage(filename, caption, data['data'], contenttype)
             self.newsmedia[filename] = file_
+
+class EditImageForm(grok.EditForm):
+    grok.context(IImage)
+    grok.name(u'edit')
+    grok.require('cmf.ModifyPortalContent')
+
+    form_fields = grok.AutoFields(IImage)
+    template = grok.PageTemplateFile('newsmedia_templates/default_edit_form.pt')
+
+class DeleteImage(grok.View):
+    grok.context(IATNewsItem)
+    grok.require('zope2.DeleteObjects')
+
+    def render(self):
+        filename = urllib.unquote(self.request.get('QUERY_STRING'))
+        if filename and filename in self.context['media']:
+            del self.context['media'][filename]
+            self.redirect(self.url(self.context))
 
 class BaseViewlet(grok.Viewlet):
     grok.viewletmanager(IAboveContentBody)
@@ -146,13 +173,13 @@ class BaseViewlet(grok.Viewlet):
         biglist = []
         return thumblist, biglist
 
-class ImageThumbView(grok.View):
+class BaseImageView(grok.View):
+    grok.baseclass()
     grok.context(Image)
-    grok.name('thumb')
-    grok.require('zope2.View')
+    size = ()
 
     def render(self):
-        thumb, format = self.scale(w=200, h=200)
+        thumb, format = self.scale(*self.size)
         img = self._make_image(file=thumb, format=format)
         imgd = img.__of__(aq_parent(aq_inner(self.context)))
         return imgd.index_html(self.request, self.response)
@@ -162,7 +189,7 @@ class ImageThumbView(grok.View):
         id = self.context.__name__
         title = self.context.title
         mimetype = 'image/%s' % format.lower()
-        return Image(id, title, file, mimetype)
+        return MediaImage(id, title, file, mimetype)
 
     def scale(self, w, h, default_format = 'PNG'):
         """ scale image (with material from ImageTag_Hotfix)"""
@@ -194,3 +221,13 @@ class ImageThumbView(grok.View):
         image.save(thumbnail_file, format, quality=88)
         thumbnail_file.seek(0)
         return thumbnail_file, format.lower()
+
+class ImageThumbView(BaseImageView):
+    grok.name('thumb')
+    grok.require('zope2.View')
+    size = (200, 200)
+
+class ImageLargeView(BaseImageView):
+    grok.name('large')
+    grok.require('zope2.View')
+    size = (768, 768)
