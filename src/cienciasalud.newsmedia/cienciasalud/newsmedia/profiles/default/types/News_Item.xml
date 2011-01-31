@@ -36,7 +36,7 @@
     visible="True">
   <permission value="Modify portal content"/>
  </action>
- <action title="Add media" action_id="add_media" category="object"
+ <action title="Media" action_id="add_media" category="object"
     condition_expr="not:object/@@plone_lock_info/is_locked_for_current_user|python:True"
     icon_expr="" link_target="" url_expr="string:${object_url}/add_media"
     visible="True">

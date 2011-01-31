@@ -1,6 +1,6 @@
 #news-media-wrapper {
     width: 100%; height: 200px; margin: 0; padding: 0;
-    display: block; border: 1px solid #000000; background-color: #fe45fe;
+    display: block;
 }
 
 div.newsMediaContainer p.discreet {
@@ -13,6 +13,8 @@ div.newsMediaContainer p.discreet {
     top: -3em;
     width: 200px;
 }
+
+#content .discreet { color: #ffffff; font-weight: bold; text-align: center; }
 
 .newsMediaContainer { margin: 0; background-color: transparent; }
 .newsMediaContainer li { display: table-cell; padding-left: 8px; padding-right: 8px; background-color: none; border-left: 1px solid #000000; border-bottom: 1px solid #000000; height: 59px; vertical-align: middle; text-align: center;}
