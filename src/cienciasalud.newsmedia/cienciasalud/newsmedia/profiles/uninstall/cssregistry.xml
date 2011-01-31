@@ -25,4 +25,10 @@
     <stylesheet
         id="++resource++cienciasalud.newsmedia/style.css"
         remove="True" />
+    <stylesheet
+        id="++resource++cienciasalud.newsmedia/scrollable-horizontal.css"
+        remove="True" />
+    <stylesheet
+        id="++resource++cienciasalud.newsmedia/scrollable-button.css"
+        remove="True" />
 </object>

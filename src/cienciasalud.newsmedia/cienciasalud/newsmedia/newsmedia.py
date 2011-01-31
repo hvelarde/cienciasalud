@@ -1,6 +1,7 @@
 import datetime
 import pytz
 import urllib
+import math
 
 from five import grok
 from plone.app.layout.viewlets.interfaces import IAboveContentBody
@@ -132,7 +133,7 @@ class AddFileForm(grok.AddForm):
         fileupload = self.request['form.data']
         if fileupload and fileupload.filename:
             contenttype = fileupload.headers.get('Content-Type')
-            asciiname = filenamenormalizer.normalize(fileupload.filename)
+            asciiname = filenamenormalizer.normalize(text=fileupload.filename, locale=self.request.locale.getLocaleID())
             filename = INameChooser(self.newsmedia).chooseName(asciiname, None)
             if not data['title']:
                 caption = filename
@@ -168,10 +169,19 @@ class BaseViewlet(grok.Viewlet):
         newsmedia = INewsItemMedia(self.context)
         self.newsmedia = newsmedia
 
-    def imageLists(self, thumb_size=(200,200), big_size=(768,768)):
-        thumblist = []
-        biglist = []
-        return thumblist, biglist
+    def imageRows(self, cols, keys):
+        rows = []
+        if not cols or not keys:
+            return rows
+        rows_number = int(math.ceil(float(len(keys))/float(cols)))
+        for row in range(rows_number):
+            this_row = []
+            start = row*int(cols)
+            end = start + int(cols) 
+            for key in keys[start:end]:
+                this_row.append(key)
+            rows.append(this_row)
+        return rows
 
 class BaseImageView(grok.View):
     grok.baseclass()

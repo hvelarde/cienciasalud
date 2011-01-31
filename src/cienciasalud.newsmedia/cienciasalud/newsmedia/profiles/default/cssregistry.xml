@@ -23,7 +23,18 @@
 
     <stylesheet
         id="++resource++cienciasalud.newsmedia/style.css"
-        media="" rel="stylesheet" rendering="import"
+        media="" rel="stylesheet" rendering="link"
         cacheable="True" compression="safe" cookable="True"
         enabled="1" expression="" insert-after="ploneKss.css"/>
+    <stylesheet
+        id="++resource++cienciasalud.newsmedia/scrollable-horizontal.css"
+        media="" rel="stylesheet" rendering="link"
+        cacheable="True" compression="safe" cookable="True"
+        enabled="1" expression="" insert-after="++resource++cienciasalud.newsmedia/style.css"/>
+    <stylesheet
+        id="++resource++cienciasalud.newsmedia/scrollable-button.css"
+        media="" rel="stylesheet" rendering="link"
+        cacheable="True" compression="safe" cookable="True"
+        enabled="1" expression="" insert-after="++resource++cienciasalud.newsmedia/scrollable-horizontal.css"/>
+
 </object>
