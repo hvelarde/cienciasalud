@@ -7,7 +7,7 @@
 <!--/* OpenX Javascript Tag v2.8.7 */-->
 
 <script type='text/javascript'><!--//<![CDATA[
-   var m3_u = (location.protocol=='https:'?'https://openx.dreglad.name/www/delivery/ajs.php':'http://openx.dreglad.name/www/delivery/ajs.php');
+   var m3_u = (location.protocol=='https:'?'https://pubads.biz/www/delivery/ajs.php':'http://pubads.biz/www/delivery/ajs.php');
    var m3_r = Math.floor(Math.random()*99999999999);
    if (!document.MAX_used) document.MAX_used = ',';
    document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
@@ -20,6 +20,6 @@
    if (document.context) document.write ("&context=" + escape(document.context));
    if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
    document.write ("'><\/scr"+"ipt>");
-//]]>--></script><noscript><a href='http://openx.dreglad.name/www/delivery/ck.php?n=a4d6fce0&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://openx.dreglad.name/www/delivery/avw.php?zoneid=5&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a4d6fce0' border='0' alt='' /></a></noscript>
+//]]>--></script><noscript><a href='http://pubads.biz/www/delivery/ck.php?n=a52bbc5c&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://pubads.biz/www/delivery/avw.php?zoneid=5&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a52bbc5c' border='0' alt='' /></a></noscript>
 </div>
 </html>
