@@ -123,7 +123,7 @@ class AddFileForm(grok.AddForm):
     grok.require('cmf.AddPortalContent')
     grok.layer(INewsMediaLayer)
 
-    form_fields = grok.AutoFields(IImage)
+    form_fields = grok.AutoFields(IImage).select('data')
     template = grok.PageTemplateFile('newsmedia_templates/default_edit_form.pt')
 
     def update(self):
@@ -136,7 +136,7 @@ class AddFileForm(grok.AddForm):
     def add(self, **data):
         if len(data['data']) > 0:
             self.upload(**data)
-        self.redirect(self.url(self.context))
+        self.redirect(self.url(self.context)+'/add_media')
 
     def upload(self, **data):
         fileupload = self.request['form.data']
@@ -144,10 +144,11 @@ class AddFileForm(grok.AddForm):
             contenttype = fileupload.headers.get('Content-Type')
             asciiname = filenamenormalizer.normalize(text=fileupload.filename, locale=self.request.locale.getLocaleID())
             filename = INameChooser(self.newsmedia).chooseName(asciiname, None)
-            if not data['title']:
-                caption = filename
-            else:
-                caption = data['title']
+            caption = filename
+            #if not data['title']:
+            #    caption = filename
+            #else:
+            #    caption = data['title']
             file_ = MediaImage(filename, caption, data['data'], contenttype)
             self.newsmedia[filename] = file_
 
@@ -169,7 +170,7 @@ class DeleteImage(grok.View):
         filename = urllib.unquote(self.request.get('QUERY_STRING'))
         if filename and filename in self.context['media']:
             del self.context['media'][filename]
-            self.redirect(self.url(self.context))
+            self.redirect(self.url(self.context, 'add_media'))
 
 class BaseViewlet(grok.Viewlet):
     grok.viewletmanager(IAboveContentBody)
@@ -254,3 +255,8 @@ class ImageLargeView(BaseImageView):
     grok.name('large')
     grok.require('zope2.View')
     size = (768, 768)
+
+class ImageMiniView(BaseImageView):
+    grok.name('mini')
+    grok.require('zope2.View')
+    size = (192, 192)

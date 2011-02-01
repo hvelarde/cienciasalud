@@ -4,10 +4,11 @@
     <tal:media condition="viewlet/newsmedia/hasContainer"
         define="media context/media;
                 img_keys media/keys;
+                key_no   python: int(cols)-len(img_keys);
                 lines python: viewlet.imageRows(cols, img_keys);">
             
     <div id="newsmedia-nav" tal:condition="lines">
-        <a class="prev browse left"></a>
+        <a class="prev browse left" tal:condition="python: key_no < 0"></a>
         <div class="scrollable">
             <div class="items">
                 <ul class="line" tal:repeat="line lines">
@@ -19,7 +20,7 @@
             <div class="visualClear"></div>
             <!--tal:content="string:VIEWLET: ${viewlet_id}"-->
         </div>
-        <a class="next browse right"></a>
+        <a class="next browse right" tal:condition="python: key_no < 0"></a>
     </div>
     <script>
         // execute your scripts when the DOM is ready. this is mostly a good habit
