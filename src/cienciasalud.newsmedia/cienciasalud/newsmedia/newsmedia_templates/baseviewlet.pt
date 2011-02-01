@@ -1,6 +1,6 @@
 <div id="news-media-wrapper" tal:define="viewlet_id viewlet/__name__;
                                         here_url context/@@plone_context_state/object_url;
-                                        cols string:3;">
+                                        cols string:6;">
     <tal:media condition="viewlet/newsmedia/hasContainer"
         define="media context/media;
                 img_keys media/keys;
@@ -10,11 +10,11 @@
         <a class="prev browse left"></a>
         <div class="scrollable">
             <div class="items">
-                <div tal:repeat="line lines">
+                <ul class="line" tal:repeat="line lines">
                 <tal:row repeat="item line">
-                    <img src="img" tal:attributes="src string:$here_url/media/$item/thumb;  alt python: media[item].title" />
+                <li class="imgwrap"><img src="img" tal:attributes="src string:$here_url/media/$item/thumb;  alt python: media[item].title" /></li>
                 </tal:row>
-                </div>
+                </ul>
             </div>
             <div class="visualClear"></div>
             <!--tal:content="string:VIEWLET: ${viewlet_id}"-->

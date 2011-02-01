@@ -1,18 +1,17 @@
-
 /*
 	root element for the scrollable.
 	when scrolling occurs this element stays still.
 */
 .scrollable {
-
 	/* required settings */
 	position:relative;
 	overflow:hidden;
-	width: 600px;
-	height:240px;
+	width: 636px;
+	height:116px;
 
 	/* custom decorations */
 	background:url(/++resource++cienciasalud.newsmedia/images/h300.png) repeat-x;
+    border: 1px solid #cccccc;
 }
 
 /*
@@ -28,21 +27,37 @@
 	clear:both;
 }
 
-.items div {
+#content .items ul {
 	float:left;
-	width:600px;
+	width:636px;
+    height:116px;
+    list-style-type: none;
+    margin: 0 auto;
 }
 
+.items ul.line {
+}
+
+.imgwrap {
+    display: inline;
+}
 /* single scrollable item */
-.scrollable img {
+#content .scrollable li {
 	float:left;
-	margin:20px 5px 20px 5px;
+    width: 90px;
+    line-height: 90px;
+    text-align: center;
+	margin:10px 5px 10px 5px;
 	background-color:#fff;
 	padding:2px;
 	border:1px solid #ccc;
 	
 	-moz-border-radius:4px;
 	-webkit-border-radius:4px;
+}
+
+#content .scrollable li img {
+    vertical-align: middle;
 }
 
 /* active item */

@@ -235,7 +235,7 @@ class BaseImageView(grok.View):
 class ImageThumbView(BaseImageView):
     grok.name('thumb')
     grok.require('zope2.View')
-    size = (200, 200)
+    size = (90, 90)
 
 class ImageLargeView(BaseImageView):
     grok.name('large')
