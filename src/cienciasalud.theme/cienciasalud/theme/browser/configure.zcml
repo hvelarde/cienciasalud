@@ -27,6 +27,14 @@
       permission="zope2.View" 
       />
 
+  <browser:viewlet
+      name="plone.personal_bar"
+      manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+      class="plone.app.layout.viewlets.common.PersonalBarViewlet"
+      layer=".interfaces.IThemeSpecific"
+      permission="zope2.View" 
+      />
+
   <!-- Zope 3 browser resources -->
 
   <!-- Resource directory for images -->
