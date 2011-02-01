@@ -6,7 +6,7 @@
 	/* required settings */
 	position:relative;
 	overflow:hidden;
-	width: 636px;
+	width: 524px;
 	height:116px;
 
 	/* custom decorations */
@@ -29,7 +29,7 @@
 
 #content .items ul {
 	float:left;
-	width:636px;
+	width:524px;
     height:116px;
     list-style-type: none;
     margin: 0 auto;
@@ -47,7 +47,7 @@
     width: 90px;
     line-height: 90px;
     text-align: center;
-	margin:10px 5px 10px 5px;
+	margin:10px 3px 10px 5px;
 	background-color:#fff;
 	padding:2px;
 	border:1px solid #ccc;

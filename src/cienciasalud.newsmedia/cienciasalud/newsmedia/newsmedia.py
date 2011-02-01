@@ -4,6 +4,7 @@ import urllib
 import math
 
 from five import grok
+from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from plone.app.layout.viewlets.interfaces import IAboveContentBody
 #from Products.Five.browser.pagetemplatefile import ZopeTwoPageTemplateFile
 
@@ -38,6 +39,9 @@ _marker = []
 
 
 grok.context(IATNewsItem)
+
+class INewsMediaLayer(IDefaultBrowserLayer):
+   """ Default Layer for News Media Items """
 
 class IImage(Interface):
     title = TextLine(
@@ -105,14 +109,19 @@ class MediaContainerView(grok.View):
     grok.context(IMediaContainer)
     grok.name('index')
     grok.require('zope2.View')
+    grok.layer(INewsMediaLayer)
 
     def update(self):
         self.redirect(self.url(self.context.__parent__))
+
+    def render(self):
+        return u''
 
 class AddFileForm(grok.AddForm):
     grok.context(IATNewsItem)
     grok.name(u'add_media')
     grok.require('cmf.AddPortalContent')
+    grok.layer(INewsMediaLayer)
 
     form_fields = grok.AutoFields(IImage)
     template = grok.PageTemplateFile('newsmedia_templates/default_edit_form.pt')
@@ -146,6 +155,7 @@ class EditImageForm(grok.EditForm):
     grok.context(IImage)
     grok.name(u'edit')
     grok.require('cmf.ModifyPortalContent')
+    grok.layer(INewsMediaLayer)
 
     form_fields = grok.AutoFields(IImage)
     template = grok.PageTemplateFile('newsmedia_templates/default_edit_form.pt')
@@ -153,6 +163,7 @@ class EditImageForm(grok.EditForm):
 class DeleteImage(grok.View):
     grok.context(IATNewsItem)
     grok.require('zope2.DeleteObjects')
+    grok.layer(INewsMediaLayer)
 
     def render(self):
         filename = urllib.unquote(self.request.get('QUERY_STRING'))
@@ -164,6 +175,7 @@ class BaseViewlet(grok.Viewlet):
     grok.viewletmanager(IAboveContentBody)
     grok.template('baseviewlet')
     grok.require('zope2.View')
+    grok.layer(INewsMediaLayer)
 
     def update(self):
         newsmedia = INewsItemMedia(self.context)
@@ -186,6 +198,7 @@ class BaseViewlet(grok.Viewlet):
 class BaseImageView(grok.View):
     grok.baseclass()
     grok.context(Image)
+    grok.layer(INewsMediaLayer)
     size = ()
 
     def render(self):
