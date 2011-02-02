@@ -9,14 +9,14 @@
       type="zope.publisher.interfaces.browser.IBrowserSkinType"
       name="Ciencia y Salud"
       />
-  
+
   <!-- Viewlets registration -->
   <browser:viewlet
       name="cienciasalud.ad"
       manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
       layer=".interfaces.IThemeSpecific"
       template="templates/ad.pt"
-      permission="zope2.View" 
+      permission="zope2.View"
       />
 
   <browser:viewlet
@@ -24,7 +24,7 @@
       manager="plone.app.layout.viewlets.interfaces.IAboveContent"
       layer=".interfaces.IThemeSpecific"
       template="templates/news.pt"
-      permission="zope2.View" 
+      permission="zope2.View"
       />
 
   <browser:viewlet
@@ -32,7 +32,7 @@
       manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
       class="plone.app.layout.viewlets.common.PersonalBarViewlet"
       layer=".interfaces.IThemeSpecific"
-      permission="zope2.View" 
+      permission="zope2.View"
       />
 
   <!-- Zope 3 browser resources -->
