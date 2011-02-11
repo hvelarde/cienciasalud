@@ -40,10 +40,7 @@
 }
 
 #ad-right-1, #ad-right-2 {
-    background-color: #eee;
     margin: 0 0 10px;
-    padding: 8px;
-    border: 1px solid #ccc;
 }
 
 #ad-right-1:before, #ad-right-2:before {
