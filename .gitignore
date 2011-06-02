@@ -9,8 +9,8 @@ develop-eggs/
 downloads/
 eggs/
 parts/
-src/Products.ContentWellPortlets/
-src/collective.carousel/
+src/Products.Collage/
+src/collective.atomsyndication/
 src/collective.disqus/
+src/collective.portlet.tal/
 var/
-
