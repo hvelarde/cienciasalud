@@ -2,15 +2,10 @@
 *.pyc
 .installed.cfg
 .mr.developer.cfg
-PloneController.app/
-adminPassword.txt
 bin/
 develop-eggs/
 downloads/
 eggs/
 parts/
-src/Products.Collage/
-src/collective.atomsyndication/
-src/collective.disqus/
-src/collective.portlet.tal/
+src/
 var/
